@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #025f4c;
-  --color-primary-hover: #014a3a;
+  --color-primary: #C2634E;
+  --color-primary-hover: #A84E3A;
 
   --color-text-primary: #222;
   --color-text-body: #444;
@@ -54,7 +54,7 @@ h1, h2, h3 {
   left: 16px;
   z-index: 100;
   padding: 8px 16px;
-  background: #025f4c;
+  background: #C2634E;
   color: #fff;
   font-size: 14px;
   font-weight: 600;
@@ -90,6 +90,34 @@ h1, h2, h3 {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Polaroid tape — jagged torn edges + noisy texture */
+.polaroid-tape {
+  background: linear-gradient(180deg, rgba(194,99,78,0.24) 0%, rgba(194,99,78,0.13) 100%);
+  box-shadow: 0 0.5px 2px rgba(0,0,0,0.06);
+  clip-path: polygon(
+    /* left torn edge (going down) */
+    3% 0%, 0% 18%, 4% 35%, 1% 50%, 3% 68%, 0% 82%, 2% 100%,
+    /* bottom edge — subtle waviness */
+    8% 98%, 15% 100%, 22% 97%, 30% 100%, 38% 98%, 45% 100%,
+    52% 97%, 60% 100%, 68% 98%, 75% 100%, 82% 97%, 90% 100%,
+    /* right torn edge (going up) */
+    98% 100%, 100% 85%, 97% 68%, 100% 52%, 96% 38%, 100% 20%, 97% 0%,
+    /* top edge — subtle waviness */
+    90% 2%, 82% 0%, 75% 3%, 68% 0%, 60% 2%, 52% 0%,
+    45% 3%, 38% 0%, 30% 2%, 22% 0%, 15% 3%, 8% 0%
+  );
+}
+.polaroid-tape::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 100px 100px;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  pointer-events: none;
 }
 
 /* Polaroid card rotation */

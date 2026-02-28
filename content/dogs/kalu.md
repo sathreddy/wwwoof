@@ -1,4 +1,5 @@
 ---
+disabled: true
 name: Kalu
 breed: Indian Pariah
 age: 1 year

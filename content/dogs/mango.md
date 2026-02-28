@@ -1,4 +1,5 @@
 ---
+disabled: true
 name: Mango
 breed: Cocker Spaniel Mix
 age: 4 months

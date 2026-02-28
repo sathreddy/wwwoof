@@ -1,4 +1,5 @@
 ---
+disabled: true
 name: Coco
 breed: Dachshund Mix
 age: 6 years

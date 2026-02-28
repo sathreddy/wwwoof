@@ -1,4 +1,5 @@
 ---
+disabled: true
 name: Tommy
 breed: Indian Pariah
 age: 1.5 years

@@ -1,4 +1,5 @@
 ---
+disabled: true
 name: Max
 breed: Labrador Mix
 age: 2 years

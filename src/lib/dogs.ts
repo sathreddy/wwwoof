@@ -45,6 +45,8 @@ export function getAllDogs(): Dog[] {
       const raw = fs.readFileSync(path.join(CONTENT_DIR, filename), "utf8");
       const { data, content } = matter(raw);
 
+      if (data.disabled) return null;
+
       return {
         slug,
         id: slug,
@@ -71,6 +73,7 @@ export function getAllDogs(): Dog[] {
         contactEmail: data.contactEmail ?? "",
       } satisfies Dog;
     })
+    .filter((dog): dog is Dog => dog !== null)
     .sort((a, b) => {
       // Available first, then adopted; within each group, alphabetical by name
       if (a.status === b.status) return a.name.localeCompare(b.name);
@@ -84,6 +87,8 @@ export function getDogBySlug(slug: string): Dog | null {
 
   const raw = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(raw);
+
+  if (data.disabled) return null;
 
   return {
     slug,

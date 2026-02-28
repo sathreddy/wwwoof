@@ -1,4 +1,5 @@
 ---
+disabled: true
 name: Bella
 breed: Indie Mix
 age: 2 years

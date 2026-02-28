@@ -47,12 +47,8 @@ export default function PolaroidCard({
       >
         {/* Transparent tape */}
         <div
-          className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 w-20 h-6 rounded-[1px]"
-          style={{
-            background: "linear-gradient(180deg, rgba(255,254,242,0.65) 0%, rgba(255,252,230,0.45) 100%)",
-            boxShadow: "0 0.5px 2px rgba(0,0,0,0.06)",
-            rotate: `${tapeRotation}deg`,
-          }}
+          className="polaroid-tape absolute -top-3 left-1/2 -translate-x-1/2 z-10 w-20 h-6"
+          style={{ rotate: `${tapeRotation}deg` }}
         />
 
         <div className="relative aspect-square overflow-hidden bg-[#eae7e1]">

@@ -79,7 +79,7 @@ export default function FilterBar() {
                     onClick={() => toggleFilter(key, option.value)}
                     className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                       isActive
-                        ? "bg-[#025f4c] text-white shadow-sm"
+                        ? "bg-[#C2634E] text-white shadow-sm"
                         : "bg-[#f5f3f0] text-[#666] hover:bg-[#ebe8e4] hover:text-[#444]"
                     }`}
                   >
@@ -95,7 +95,7 @@ export default function FilterBar() {
       {hasFilters && (
         <button
           onClick={clearFilters}
-          className="flex items-center gap-1 text-xs text-[#636363] hover:text-[#025f4c] transition-colors cursor-pointer"
+          className="flex items-center gap-1 text-xs text-[#636363] hover:text-[#C2634E] transition-colors cursor-pointer"
         >
           <X className="h-3 w-3" />
           Clear

@@ -1,4 +1,5 @@
 ---
+disabled: true
 name: Bruno
 breed: Indian Pariah
 age: 3 years

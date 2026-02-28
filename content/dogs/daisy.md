@@ -1,4 +1,5 @@
 ---
+disabled: true
 name: Daisy
 breed: Spitz Mix
 age: 5 years

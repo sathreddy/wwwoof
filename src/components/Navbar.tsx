@@ -6,9 +6,9 @@ export default function Navbar() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-center px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="text-lg font-[family-name:var(--font-display)] text-[#222] hover:text-[#025f4c] transition-colors"
+          className="text-lg font-[family-name:var(--font-display)] text-[#222] hover:text-[#C2634E] transition-colors"
         >
-          Bring home a bundle of love.
+          wwwooofff
         </Link>
       </div>
     </header>

@@ -1,4 +1,5 @@
 ---
+disabled: true
 name: Rocky
 breed: German Shepherd Mix
 age: 3 years

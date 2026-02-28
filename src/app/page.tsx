@@ -1,109 +1,128 @@
-import Link from "next/link";
-import { Phone, PawPrint, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Suspense } from "react";
+import { MessageCircle } from "lucide-react";
 import DogCard from "@/components/DogCard";
-import { getAllDogs } from "@/lib/dogs";
+import { DogGridSkeleton } from "@/components/DogGrid";
+import RotatingWord from "@/components/RotatingWord";
+import AsciiBackground from "@/components/AsciiBackground";
+import FilterBar from "@/components/FilterBar";
+import Pagination from "@/components/Pagination";
+import { getAllDogs, filterDogs } from "@/lib/dogs";
 
-function getAvailableDogs() {
-  return getAllDogs()
-    .filter((d) => d.status === "AVAILABLE")
-    .slice(0, 6)
-    .map((d) => ({
-      id: d.slug,
-      name: d.name,
-      breed: d.breed,
-      age: d.age,
-      gender: d.gender,
-      size: d.size,
-      area: d.area,
-      city: d.city,
-      images: d.images,
-      vaccinated: d.vaccinated,
-      status: d.status,
-    }));
+const PER_PAGE = 6;
+
+interface SearchParams {
+  size?: string;
+  gender?: string;
+  age?: string;
+  page?: string;
 }
 
-function getSuccessStories() {
-  return getAllDogs()
+function FoundStrayCard() {
+  return (
+    <a
+      href="mailto:hello@wwwoof.in?subject=I%20found%20a%20dog"
+      className="group block focus:outline-none"
+    >
+      <div
+        className="polaroid-frame relative bg-[#faf8f4] p-3.5 pt-3.5 pb-0 shadow-[2px_4px_14px_rgba(0,0,0,0.08)] motion-safe:group-hover:shadow-[3px_8px_24px_rgba(0,0,0,0.14)] motion-safe:group-hover:-translate-y-1"
+        style={{ "--r": "1.8deg" } as React.CSSProperties}
+      >
+        <div
+          className="polaroid-tape absolute -top-3 left-1/2 -translate-x-1/2 z-10 w-20 h-6"
+          style={{ rotate: "-2.5deg" }}
+        />
+
+        <div className="relative aspect-square overflow-hidden bg-[#C2634E] flex flex-col items-center justify-center px-6 text-center">
+          <MessageCircle className="h-10 w-10 text-white/80 mb-4" />
+          <p className="text-xl text-white font-[family-name:var(--font-display)] leading-snug mb-2">
+            Found a stray that needs a home?
+          </p>
+          <p className="text-sm text-white/75 leading-relaxed">
+            Tell us about them and we&apos;ll help find them a family.
+          </p>
+        </div>
+
+        <div className="h-16 flex items-center justify-center px-3">
+          <span className="text-2xl text-[#333] font-[family-name:var(--font-handwriting)] font-medium leading-tight text-center">
+            Tell us!
+          </span>
+        </div>
+      </div>
+    </a>
+  );
+}
+
+function DogsSection({ searchParams }: { searchParams: SearchParams }) {
+  const allAvailable = filterDogs(getAllDogs(), {
+    ...searchParams,
+    status: "AVAILABLE",
+  });
+
+  const page = Math.max(1, parseInt(searchParams.page ?? "1", 10) || 1);
+  const totalPages = Math.max(1, Math.ceil(allAvailable.length / PER_PAGE));
+  const currentPage = Math.min(page, totalPages);
+  const paged = allAvailable.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
+
+  const successStories = getAllDogs()
     .filter((d) => d.status === "ADOPTED")
-    .slice(0, 3)
-    .map((d) => ({
-      id: d.slug,
-      name: d.name,
-      breed: d.breed,
-      age: d.age,
-      gender: d.gender,
-      size: d.size,
-      area: d.area,
-      city: d.city,
-      images: d.images,
-      vaccinated: d.vaccinated,
-      status: d.status,
-    }));
-}
-
-export default async function HomePage() {
-  const availableDogs = await getAvailableDogs();
-  const successStories = await getSuccessStories();
+    .slice(0, 3);
 
   return (
     <>
-      {/* Hero */}
-      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28 text-center">
-        <div className="inline-flex items-center gap-2 rounded-full bg-[#f9fafb] px-4 py-1.5 text-sm font-bold text-[#025f4c] mb-6">
-          <PawPrint className="h-4 w-4" aria-hidden="true" />
-          Adopt, don&apos;t shop
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6 pb-16">
+        <div className="mb-6">
+          <h2 className="text-2xl sm:text-3xl text-[#222] font-[family-name:var(--font-display)]">
+            Dogs looking for homes
+          </h2>
+          <p className="text-[#636363] mt-1">
+            Every one of these dogs deserves a loving family. Could yours be next?
+          </p>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl text-[#222] leading-tight mb-6 font-[family-name:var(--font-display)]">
-          Bring home a bundle of love.
-        </h1>
+        <div className="mb-8">
+          <FilterBar />
+        </div>
 
-        <p className="text-lg text-[#666] leading-relaxed max-w-xl mx-auto">
-          We connect Bangalore&apos;s shelters, vet clinics, and rescue groups with people
-          ready to give a rescued dog their forever home.
+        <p className="text-sm text-[#636363] mb-6 font-medium">
+          {allAvailable.length} {allAvailable.length === 1 ? "dog" : "dogs"} found
         </p>
+
+        {paged.length > 0 ? (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 pt-4">
+              {paged.map((dog) => (
+                <DogCard
+                  key={dog.id}
+                  id={dog.id}
+                  name={dog.name}
+                  breed={dog.breed}
+                  age={dog.age}
+                  gender={dog.gender}
+                  size={dog.size}
+                  area={dog.area}
+                  city={dog.city}
+                  images={dog.images}
+                  vaccinated={dog.vaccinated}
+                  status={dog.status}
+                />
+              ))}
+              <FoundStrayCard />
+            </div>
+            <Pagination currentPage={currentPage} totalPages={totalPages} />
+          </>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-24 text-center">
+            <span className="text-6xl mb-4">🐾</span>
+            <h3 className="text-xl font-bold text-[#222] mb-2">No dogs found</h3>
+            <p className="text-[#636363] text-sm max-w-xs">
+              Try adjusting your filters — there are plenty of good dogs waiting!
+            </p>
+          </div>
+        )}
       </section>
 
-      {/* Available dogs */}
-      {availableDogs.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-          <div className="flex items-end justify-between mb-8">
-            <div>
-              <h2 className="text-2xl sm:text-3xl text-[#222] font-[family-name:var(--font-display)]">
-                Looking for a home
-              </h2>
-              <p className="text-[#636363] mt-1">
-                Recently posted — be the first to reach out
-              </p>
-            </div>
-            <Button asChild variant="outline" size="sm">
-              <Link href="/dogs" className="hidden sm:flex items-center gap-1">
-                See all dogs <ChevronRight className="h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 pt-4">
-            {availableDogs.map((dog) => (
-              <DogCard key={dog.id} {...dog} />
-            ))}
-          </div>
-
-          <div className="mt-8 text-center sm:hidden">
-            <Button asChild variant="outline">
-              <Link href="/dogs">See all dogs</Link>
-            </Button>
-          </div>
-        </section>
-      )}
-
-      {/* Success stories */}
       {successStories.length > 0 && (
-        <section
-          id="success-stories"
-          className="bg-[#f9fafb]"
-        >
+        <section id="success-stories" className="bg-[#f9fafb]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
             <div className="mb-8">
               <h2 className="text-2xl sm:text-3xl text-[#222] font-[family-name:var(--font-display)]">
@@ -116,35 +135,57 @@ export default async function HomePage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 pt-4">
               {successStories.map((dog) => (
-                <DogCard key={dog.id} {...dog} />
+                <DogCard
+                  key={dog.id}
+                  id={dog.id}
+                  name={dog.name}
+                  breed={dog.breed}
+                  age={dog.age}
+                  gender={dog.gender}
+                  size={dog.size}
+                  area={dog.area}
+                  city={dog.city}
+                  images={dog.images}
+                  vaccinated={dog.vaccinated}
+                  status={dog.status}
+                />
               ))}
             </div>
           </div>
         </section>
       )}
+    </>
+  );
+}
 
-      {/* Shelter CTA */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="rounded-3xl bg-[#025f4c] px-8 py-12 text-center text-white relative overflow-hidden">
-          <div className="relative">
-            <PawPrint className="h-8 w-8 mx-auto mb-4 opacity-80" aria-hidden="true" />
-            <h2 className="text-2xl sm:text-3xl mb-3 font-[family-name:var(--font-display)]">
-              Are you a shelter or vet clinic?
-            </h2>
-            <p className="text-white/90 mb-6 max-w-md mx-auto text-sm leading-relaxed">
-              If you rescue dogs or work with strays in Bangalore, we&apos;d love to partner with you.
-              Get your dogs in front of thousands of potential adopters.
-            </p>
-            <a
-              href="mailto:hello@wwwoof.in"
-              className="inline-flex items-center gap-2 rounded-full bg-white text-[#025f4c] font-bold px-7 py-3 text-sm hover:bg-[#f9fafb] transition-colors shadow-lg"
-            >
-              <Phone className="h-4 w-4" />
-              Get in touch — hello@wwwoof.in
-            </a>
-          </div>
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<SearchParams>;
+}) {
+  const params = await searchParams;
+
+  return (
+    <>
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <AsciiBackground />
+        <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:pt-36 lg:pb-28 text-center">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl text-[#222] leading-tight mb-4 font-[family-name:var(--font-display)]">
+            Bring home a bundle of <RotatingWord />.
+          </h1>
+
+          <p className="text-lg text-[#666] leading-relaxed max-w-xl mx-auto">
+            Somewhere in Bangalore, there&apos;s a dog that already loves you.
+            You just haven&apos;t met yet.
+          </p>
         </div>
       </section>
+
+      {/* Dogs listing */}
+      <Suspense fallback={<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6 pb-16"><DogGridSkeleton count={6} /></div>}>
+        <DogsSection searchParams={params} />
+      </Suspense>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Instrument_Serif, Caveat } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+
 import Footer from "@/components/Footer";
 
 const dmSans = DM_Sans({
@@ -37,9 +37,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${instrumentSerif.variable} ${caveat.variable} min-h-screen bg-white antialiased`}>
+      <body className={`${dmSans.variable} ${instrumentSerif.variable} ${caveat.variable} min-h-screen antialiased`}>
         <a href="#main-content" className="skip-link">Skip to content</a>
-        <Navbar />
         <main id="main-content">{children}</main>
         <Footer />
       </body>

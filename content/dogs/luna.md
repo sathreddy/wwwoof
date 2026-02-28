@@ -1,4 +1,5 @@
 ---
+disabled: true
 name: Luna
 breed: Beagle Mix
 age: 8 months

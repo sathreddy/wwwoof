@@ -7,6 +7,7 @@ import { formatGender, formatSize } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import ContactCard from "@/components/ContactCard";
+import ImageGallery from "@/components/ImageGallery";
 
 export async function generateStaticParams() {
   return getAllDogs().map((dog) => ({ id: dog.slug }));
@@ -59,7 +60,7 @@ export default async function DogDetailPage({
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
       <Link
         href="/dogs"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#636363] hover:text-[#025f4c] transition-colors mb-6"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#636363] hover:text-[#C2634E] transition-colors mb-6"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to all dogs
@@ -68,42 +69,7 @@ export default async function DogDetailPage({
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
         {/* Left column */}
         <div className="lg:col-span-3 space-y-5">
-          <div className="relative h-72 sm:h-96 w-full rounded-2xl overflow-hidden bg-[#f9fafb] shadow-[0_1px_4px_rgba(0,0,0,0.04)]">
-            <Image
-              src={images[0]}
-              alt={dog.name}
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 60vw"
-              className="object-cover"
-            />
-            {isAdopted && (
-              <div className="absolute bottom-3 left-3">
-                <Badge variant="success" className="text-sm px-3 py-1.5 font-bold">
-                  Found a home
-                </Badge>
-              </div>
-            )}
-          </div>
-
-          {images.length > 1 && (
-            <div className="flex gap-3 overflow-x-auto pb-1">
-              {images.slice(1).map((src, i) => (
-                <div
-                  key={i}
-                  className="relative h-20 w-24 shrink-0 rounded-xl overflow-hidden bg-[#f9fafb]"
-                >
-                  <Image
-                    src={src}
-                    alt={`${dog.name} photo ${i + 2}`}
-                    fill
-                    sizes="96px"
-                    className="object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-          )}
+          <ImageGallery images={images} name={dog.name} isAdopted={isAdopted} />
 
           <div>
             <h2 className="text-lg text-[#222] mb-2 font-[family-name:var(--font-display)]">
@@ -143,7 +109,7 @@ export default async function DogDetailPage({
               )}
             </div>
             <div className="flex items-center gap-1.5 text-sm text-[#636363]">
-              <MapPin className="h-3.5 w-3.5 text-[#025f4c]" />
+              <MapPin className="h-3.5 w-3.5 text-[#C2634E]" />
               {dog.area ? `${dog.area}, ${dog.city}` : dog.city}
             </div>
           </div>
