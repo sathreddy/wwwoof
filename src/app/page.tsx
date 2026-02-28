@@ -175,7 +175,7 @@ export default async function HomePage({
             Bring home a bundle of <RotatingWord />.
           </h1>
 
-          <p className="text-lg text-[#666] leading-relaxed max-w-xl mx-auto">
+          <p className="text-lg text-[#444] font-medium leading-relaxed max-w-xl mx-auto">
             Somewhere in Bangalore, there&apos;s a dog that already loves you.
             You just haven&apos;t met yet.
           </p>
