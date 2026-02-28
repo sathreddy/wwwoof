@@ -112,9 +112,29 @@ export function getDogBySlug(slug: string): Dog | null {
   };
 }
 
+function parseAgeToMonths(age: string): number {
+  const match = age.match(/([\d.]+)\s*(year|month|week)/i);
+  if (!match) return 0;
+  const val = parseFloat(match[1]);
+  const unit = match[2].toLowerCase();
+  if (unit.startsWith("year")) return val * 12;
+  if (unit.startsWith("month")) return val;
+  if (unit.startsWith("week")) return val / 4;
+  return 0;
+}
+
+export function getAgeCategory(age: string): string {
+  const months = parseAgeToMonths(age);
+  if (months < 12) return "PUPPY";
+  if (months <= 36) return "YOUNG";
+  if (months <= 84) return "ADULT";
+  return "SENIOR";
+}
+
 export interface FilterOptions {
   size?: string;
   gender?: string;
+  age?: string;
   area?: string;
   vaccinated?: string;
   status?: string;
@@ -125,6 +145,7 @@ export function filterDogs(dogs: Dog[], filters: FilterOptions): Dog[] {
     if (filters.status && dog.status !== filters.status) return false;
     if (filters.size && dog.size !== filters.size) return false;
     if (filters.gender && dog.gender !== filters.gender) return false;
+    if (filters.age && getAgeCategory(dog.age) !== filters.age) return false;
     if (filters.area && dog.area !== filters.area) return false;
     if (filters.vaccinated === "true" && !dog.vaccinated) return false;
     if (filters.vaccinated === "false" && dog.vaccinated) return false;

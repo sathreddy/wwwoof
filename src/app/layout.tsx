@@ -1,7 +1,27 @@
 import type { Metadata } from "next";
+import { DM_Sans, Instrument_Serif, Caveat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-handwriting",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "wwwoof — Find your forever dog in Bangalore",
@@ -17,17 +37,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="min-h-screen bg-[#fdfaf5] antialiased font-[Nunito,system-ui,sans-serif]">
+      <body className={`${dmSans.variable} ${instrumentSerif.variable} ${caveat.variable} min-h-screen bg-white antialiased`}>
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <Navbar />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
       </body>
     </html>

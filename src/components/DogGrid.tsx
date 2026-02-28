@@ -23,8 +23,8 @@ export default function DogGrid({ dogs }: DogGridProps) {
     return (
       <div className="flex flex-col items-center justify-center py-24 text-center">
         <span className="text-6xl mb-4">🐾</span>
-        <h3 className="text-xl font-bold text-brown-900 mb-2">No dogs found</h3>
-        <p className="text-brown-800/60 text-sm max-w-xs">
+        <h3 className="text-xl font-bold text-[#222] mb-2">No dogs found</h3>
+        <p className="text-[#636363] text-sm max-w-xs">
           Try adjusting your filters — there are plenty of good dogs waiting!
         </p>
       </div>
@@ -32,7 +32,7 @@ export default function DogGrid({ dogs }: DogGridProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 pt-4">
       {dogs.map((dog) => (
         <DogCard key={dog.id} {...dog} />
       ))}
@@ -42,7 +42,7 @@ export default function DogGrid({ dogs }: DogGridProps) {
 
 export function DogGridSkeleton({ count = 6 }: { count?: number }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {Array.from({ length: count }).map((_, i) => (
         <DogCardSkeleton key={i} />
       ))}
