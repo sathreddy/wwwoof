@@ -6,24 +6,22 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-btn)] text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#025f4c] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         default:
-          "bg-amber-500 text-white shadow hover:bg-amber-600 active:scale-[0.98]",
+          "bg-[#025f4c] text-white rounded-[1.5rem] shadow hover:bg-[#014a3a]",
         outline:
-          "border-2 border-amber-500 text-amber-700 bg-transparent hover:bg-amber-50 active:scale-[0.98]",
+          "border border-[#ddd] text-[#444] rounded-[0.5rem] bg-transparent hover:bg-[#f9fafb]",
         ghost:
-          "text-brown-800 hover:bg-amber-50 hover:text-amber-700",
-        teal:
-          "bg-teal-500 text-white shadow hover:bg-teal-600 active:scale-[0.98]",
+          "text-[#444] rounded-[0.5rem] hover:bg-[#f9fafb] hover:text-[#222]",
         secondary:
-          "bg-amber-100 text-amber-800 hover:bg-amber-200 active:scale-[0.98]",
+          "bg-[#f9fafb] text-[#444] border border-[#eee] rounded-[0.5rem]",
         destructive:
-          "bg-red-500 text-white shadow hover:bg-red-600",
+          "bg-red-500 text-white shadow hover:bg-red-600 rounded-[0.5rem]",
         link:
-          "text-amber-600 underline-offset-4 hover:underline p-0 h-auto",
+          "text-[#025f4c] underline-offset-4 hover:underline p-0 h-auto",
       },
       size: {
         default: "h-10 px-5 py-2",
