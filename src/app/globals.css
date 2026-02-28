@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  /* wwwoof brand colours */
+  --color-amber-50: #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-200: #fde68a;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+
+  --color-brown-50: #fdf8f0;
+  --color-brown-100: #fdf1de;
+  --color-brown-800: #78350f;
+  --color-brown-900: #1c0a00;
+
+  --color-cream: #fdfaf5;
+  --color-teal-500: #0d9488;
+  --color-teal-600: #0f766e;
+
+  /* Design tokens */
+  --color-brand: var(--color-amber-500);
+  --color-brand-dark: var(--color-amber-600);
+  --color-page-bg: var(--color-cream);
+  --color-text-primary: var(--color-brown-900);
+  --color-text-muted: var(--color-brown-800);
+  --color-accent: var(--color-teal-500);
+
+  /* Font */
+  --font-sans: "Nunito", system-ui, sans-serif;
+  --font-display: "Nunito", system-ui, sans-serif;
+
+  /* Radius */
+  --radius-card: 1rem;
+  --radius-btn: 0.625rem;
+}
+
+:root {
+  --background: #fdfaf5;
+  --foreground: #1c0a00;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fef3c7;
+}
+::-webkit-scrollbar-thumb {
+  background: #d97706;
+  border-radius: 3px;
+}
