@@ -15,7 +15,7 @@ export default function ImageGallery({ images, name, isAdopted }: ImageGalleryPr
 
   return (
     <div className="space-y-3">
-      <div className="relative h-72 sm:h-96 w-full rounded-2xl overflow-hidden bg-[#f9fafb] shadow-[0_1px_4px_rgba(0,0,0,0.04)]">
+      <div className="relative h-72 sm:h-96 w-full rounded-2xl overflow-hidden bg-[#f7f1de] shadow-[0_1px_4px_rgba(0,0,0,0.04)]">
         <Image
           key={images[activeIndex]}
           src={images[activeIndex]}
@@ -40,8 +40,8 @@ export default function ImageGallery({ images, name, isAdopted }: ImageGalleryPr
             <button
               key={i}
               onClick={() => setActiveIndex(i)}
-              className={`relative h-20 w-24 shrink-0 rounded-xl overflow-hidden bg-[#f9fafb] cursor-pointer transition-opacity ${
-                i === activeIndex ? "ring-2 ring-[#C2634E] opacity-100" : "opacity-60 hover:opacity-100"
+              className={`relative h-20 w-24 shrink-0 rounded-xl overflow-hidden bg-[#f7f1de] cursor-pointer transition-opacity ${
+                i === activeIndex ? "ring-2 ring-[#5281a2] opacity-100" : "opacity-60 hover:opacity-100"
               }`}
             >
               <Image

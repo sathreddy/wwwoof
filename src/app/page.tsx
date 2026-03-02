@@ -32,7 +32,7 @@ function FoundStrayCard() {
           style={{ rotate: "-2.5deg" }}
         />
 
-        <div className="relative aspect-square overflow-hidden bg-[#C2634E] flex flex-col items-center justify-center px-6 text-center">
+        <div className="relative aspect-square overflow-hidden bg-[#5281a2] flex flex-col items-center justify-center px-6 text-center">
           <MessageCircle className="h-10 w-10 text-white/80 mb-4" />
           <p className="text-xl text-white font-[family-name:var(--font-display)] leading-snug mb-2">
             Found a stray that needs a home?
@@ -43,7 +43,7 @@ function FoundStrayCard() {
         </div>
 
         <div className="h-16 flex items-center justify-center px-3">
-          <span className="text-2xl text-[#333] font-[family-name:var(--font-handwriting)] font-medium leading-tight text-center">
+          <span className="text-2xl text-[#33495f] font-[family-name:var(--font-handwriting)] font-medium leading-tight text-center">
             Tell us!
           </span>
         </div>
@@ -71,10 +71,10 @@ function DogsSection({ searchParams }: { searchParams: SearchParams }) {
     <>
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6 pb-16">
         <div className="mb-6">
-          <h2 className="text-2xl sm:text-3xl text-[#222] font-[family-name:var(--font-display)]">
+          <h2 className="text-2xl sm:text-3xl text-[#33495f] font-[family-name:var(--font-display)]">
             Dogs looking for homes
           </h2>
-          <p className="text-[#636363] mt-1">
+          <p className="text-[#55677a] mt-1">
             Every one of these dogs deserves a loving family. Could yours be next?
           </p>
         </div>
@@ -83,7 +83,7 @@ function DogsSection({ searchParams }: { searchParams: SearchParams }) {
           <FilterBar />
         </div>
 
-        <p className="text-sm text-[#636363] mb-6 font-medium">
+        <p className="text-sm text-[#55677a] mb-6 font-medium">
           {allAvailable.length} {allAvailable.length === 1 ? "dog" : "dogs"} found
         </p>
 
@@ -113,8 +113,8 @@ function DogsSection({ searchParams }: { searchParams: SearchParams }) {
         ) : (
           <div className="flex flex-col items-center justify-center py-24 text-center">
             <span className="text-6xl mb-4">🐾</span>
-            <h3 className="text-xl font-bold text-[#222] mb-2">No dogs found</h3>
-            <p className="text-[#636363] text-sm max-w-xs">
+            <h3 className="text-xl font-bold text-[#33495f] mb-2">No dogs found</h3>
+            <p className="text-[#55677a] text-sm max-w-xs">
               Try adjusting your filters — there are plenty of good dogs waiting!
             </p>
           </div>
@@ -122,13 +122,13 @@ function DogsSection({ searchParams }: { searchParams: SearchParams }) {
       </section>
 
       {successStories.length > 0 && (
-        <section id="success-stories" className="bg-[#f9fafb]">
+        <section id="success-stories" className="bg-[#f7f1de]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
             <div className="mb-8">
-              <h2 className="text-2xl sm:text-3xl text-[#222] font-[family-name:var(--font-display)]">
+              <h2 className="text-2xl sm:text-3xl text-[#33495f] font-[family-name:var(--font-display)]">
                 Found a home
               </h2>
-              <p className="text-[#636363] mt-1">
+              <p className="text-[#55677a] mt-1">
                 These dogs found their forever families through wwwoof
               </p>
             </div>
@@ -171,11 +171,11 @@ export default async function HomePage({
       <section className="relative overflow-hidden">
         <AsciiBackground />
         <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:pt-36 lg:pb-28 text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl text-[#222] leading-tight mb-4 font-[family-name:var(--font-display)]">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl text-[#33495f] leading-tight mb-4 font-[family-name:var(--font-display)]">
             Bring home a bundle of <RotatingWord />.
           </h1>
 
-          <p className="text-lg text-[#444] font-medium leading-relaxed max-w-xl mx-auto">
+          <p className="text-lg text-[#33495f] font-medium leading-relaxed max-w-xl mx-auto">
             Somewhere in Bangalore, there&apos;s a dog that already loves you.
             You just haven&apos;t met yet.
           </p>

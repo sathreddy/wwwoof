@@ -51,7 +51,7 @@ export default function PolaroidCard({
           style={{ rotate: `${tapeRotation}deg` }}
         />
 
-        <div className="relative aspect-square overflow-hidden bg-[#eae7e1]">
+        <div className="relative aspect-square overflow-hidden bg-[#ede8d8]">
           <Image
             src={imgSrc}
             alt={name}
@@ -70,7 +70,7 @@ export default function PolaroidCard({
 
         {/* Thick bottom area — classic polaroid */}
         <div className="h-16 flex items-center justify-center px-3">
-          <h3 className="text-2xl text-[#333] font-[family-name:var(--font-handwriting)] font-medium leading-tight text-center">
+          <h3 className="text-2xl text-[#33495f] font-[family-name:var(--font-handwriting)] font-medium leading-tight text-center">
             {name}
           </h3>
         </div>
@@ -82,9 +82,9 @@ export default function PolaroidCard({
 export function PolaroidCardSkeleton() {
   return (
     <div className="bg-[#faf8f4] p-3 pb-0 shadow-[2px_4px_14px_rgba(0,0,0,0.05)]">
-      <div className="aspect-square w-full bg-[#eae7e1] animate-pulse" />
+      <div className="aspect-square w-full bg-[#ede8d8] animate-pulse" />
       <div className="h-16 flex items-center justify-center">
-        <div className="h-5 w-20 bg-[#eae7e1] animate-pulse rounded" />
+        <div className="h-5 w-20 bg-[#ede8d8] animate-pulse rounded" />
       </div>
     </div>
   );

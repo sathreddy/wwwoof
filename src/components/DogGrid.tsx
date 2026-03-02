@@ -23,8 +23,8 @@ export default function DogGrid({ dogs }: DogGridProps) {
     return (
       <div className="flex flex-col items-center justify-center py-24 text-center">
         <span className="text-6xl mb-4">🐾</span>
-        <h3 className="text-xl font-bold text-[#222] mb-2">No dogs found</h3>
-        <p className="text-[#636363] text-sm max-w-xs">
+        <h3 className="text-xl font-bold text-[#33495f] mb-2">No dogs found</h3>
+        <p className="text-[#55677a] text-sm max-w-xs">
           Try adjusting your filters — there are plenty of good dogs waiting!
         </p>
       </div>

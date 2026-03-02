@@ -31,7 +31,7 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
       <button
         onClick={() => goToPage(currentPage - 1)}
         disabled={currentPage <= 1}
-        className="flex items-center justify-center h-9 w-9 rounded-full text-[#666] hover:bg-[#f5f3f0] disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
+        className="flex items-center justify-center h-9 w-9 rounded-full text-[#55677a] hover:bg-[#f7f1de] disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
       >
         <ChevronLeft className="h-4 w-4" />
       </button>
@@ -42,8 +42,8 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
           onClick={() => goToPage(page)}
           className={`h-9 w-9 rounded-full text-sm font-semibold transition-colors cursor-pointer ${
             page === currentPage
-              ? "bg-[#C2634E] text-white"
-              : "text-[#666] hover:bg-[#f5f3f0]"
+              ? "bg-[#5281a2] text-white"
+              : "text-[#55677a] hover:bg-[#f7f1de]"
           }`}
         >
           {page}
@@ -53,7 +53,7 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
       <button
         onClick={() => goToPage(currentPage + 1)}
         disabled={currentPage >= totalPages}
-        className="flex items-center justify-center h-9 w-9 rounded-full text-[#666] hover:bg-[#f5f3f0] disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
+        className="flex items-center justify-center h-9 w-9 rounded-full text-[#55677a] hover:bg-[#f7f1de] disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
       >
         <ChevronRight className="h-4 w-4" />
       </button>

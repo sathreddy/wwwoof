@@ -6,22 +6,22 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C2634E] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5281a2] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         default:
-          "bg-[#C2634E] text-white rounded-[1.5rem] shadow hover:bg-[#A84E3A]",
+          "bg-[#5281a2] text-white rounded-[1.5rem] shadow hover:bg-[#3d6a8a]",
         outline:
-          "border border-[#ddd] text-[#444] rounded-[0.5rem] bg-transparent hover:bg-[#f9fafb]",
+          "border border-[#d1d5db] text-[#33495f] rounded-[0.5rem] bg-transparent hover:bg-[#f7f1de]",
         ghost:
-          "text-[#444] rounded-[0.5rem] hover:bg-[#f9fafb] hover:text-[#222]",
+          "text-[#33495f] rounded-[0.5rem] hover:bg-[#f7f1de] hover:text-[#33495f]",
         secondary:
-          "bg-[#f9fafb] text-[#444] border border-[#eee] rounded-[0.5rem]",
+          "bg-[#f7f1de] text-[#33495f] border border-[#e5e5e5] rounded-[0.5rem]",
         destructive:
           "bg-red-500 text-white shadow hover:bg-red-600 rounded-[0.5rem]",
         link:
-          "text-[#C2634E] underline-offset-4 hover:underline p-0 h-auto",
+          "text-[#5281a2] underline-offset-4 hover:underline p-0 h-auto",
       },
       size: {
         default: "h-10 px-5 py-2",

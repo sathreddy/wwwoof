@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Instrument_Serif, Caveat } from "next/font/google";
+import { DM_Sans, Fraunces, Caveat } from "next/font/google";
 import "./globals.css";
 
 import Footer from "@/components/Footer";
@@ -10,8 +10,7 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
+const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
@@ -37,7 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${instrumentSerif.variable} ${caveat.variable} min-h-screen antialiased`}>
+      <body className={`${dmSans.variable} ${fraunces.variable} ${caveat.variable} min-h-screen antialiased`}>
         <a href="#main-content" className="skip-link">Skip to content</a>
         <main id="main-content">{children}</main>
         <Footer />

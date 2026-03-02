@@ -60,7 +60,7 @@ export default async function DogDetailPage({
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
       <Link
         href="/dogs"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#636363] hover:text-[#C2634E] transition-colors mb-6"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#55677a] hover:text-[#5281a2] transition-colors mb-6"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to all dogs
@@ -72,10 +72,10 @@ export default async function DogDetailPage({
           <ImageGallery images={images} name={dog.name} isAdopted={isAdopted} />
 
           <div>
-            <h2 className="text-lg text-[#222] mb-2 font-[family-name:var(--font-display)]">
+            <h2 className="text-lg text-[#33495f] mb-2 font-[family-name:var(--font-display)]">
               About {dog.name}
             </h2>
-            <div className="text-[#666] leading-relaxed space-y-3">
+            <div className="text-[#55677a] leading-relaxed space-y-3">
               {dog.description.split("\n\n").map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
@@ -83,7 +83,7 @@ export default async function DogDetailPage({
           </div>
 
           <div>
-            <h2 className="text-lg text-[#222] mb-3 font-[family-name:var(--font-display)]">
+            <h2 className="text-lg text-[#33495f] mb-3 font-[family-name:var(--font-display)]">
               Compatibility
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -99,7 +99,7 @@ export default async function DogDetailPage({
         <div className="lg:col-span-2 space-y-5">
           <div>
             <div className="flex items-start justify-between gap-2 mb-1">
-              <h1 className="text-3xl text-[#222] font-[family-name:var(--font-display)]">
+              <h1 className="text-3xl text-[#33495f] font-[family-name:var(--font-display)]">
                 {dog.name}
               </h1>
               {dog.vaccinated && (
@@ -108,8 +108,8 @@ export default async function DogDetailPage({
                 </Badge>
               )}
             </div>
-            <div className="flex items-center gap-1.5 text-sm text-[#636363]">
-              <MapPin className="h-3.5 w-3.5 text-[#C2634E]" />
+            <div className="flex items-center gap-1.5 text-sm text-[#55677a]">
+              <MapPin className="h-3.5 w-3.5 text-[#5281a2]" />
               {dog.area ? `${dog.area}, ${dog.city}` : dog.city}
             </div>
           </div>
@@ -123,11 +123,11 @@ export default async function DogDetailPage({
               { label: "Colour", value: dog.color ?? "—" },
               { label: "Neutered", value: dog.neutered ? "Yes" : "No" },
             ].map(({ label, value }) => (
-              <div key={label} className="rounded-xl bg-[#f9fafb] p-3">
-                <p className="text-xs text-stone-500 font-semibold uppercase tracking-wide mb-0.5">
+              <div key={label} className="rounded-xl bg-[#f7f1de] p-3">
+                <p className="text-xs text-[#55677a] font-semibold uppercase tracking-wide mb-0.5">
                   {label}
                 </p>
-                <p className="text-sm font-bold text-[#222]">{value}</p>
+                <p className="text-sm font-bold text-[#33495f]">{value}</p>
               </div>
             ))}
           </div>
@@ -140,10 +140,10 @@ export default async function DogDetailPage({
               contactEmail={dog.contactEmail}
             />
           ) : (
-            <div className="rounded-2xl border-2 border-stone-200 bg-stone-50 p-6 text-center space-y-2">
+            <div className="rounded-2xl border-2 border-[#5281a2] bg-[#f7f1de] p-6 text-center space-y-2">
               <p className="text-2xl">🎉</p>
-              <p className="font-bold text-[#222]">This dog has found a home!</p>
-              <p className="text-sm text-stone-500">
+              <p className="font-bold text-[#33495f]">This dog has found a home!</p>
+              <p className="text-sm text-[#55677a]">
                 Check out other dogs still waiting.
               </p>
               <Button asChild variant="outline" className="mt-2">

@@ -22,7 +22,7 @@ export default function RotatingWord() {
 
   return (
     <span
-      className="inline-block text-[#C2634E] transition-all duration-300 ease-in-out"
+      className="inline-block text-[#5281a2] transition-all duration-300 ease-in-out"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(8px)",

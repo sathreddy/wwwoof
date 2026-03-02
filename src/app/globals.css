@@ -1,30 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #C2634E;
-  --color-primary-hover: #A84E3A;
+  --color-primary: #5281a2;
+  --color-primary-hover: #3d6a8a;
 
-  --color-text-primary: #222;
-  --color-text-body: #444;
-  --color-text-muted: #666;
-  --color-text-light: #636363;
+  --color-text-primary: #33495f;
+  --color-text-body: #33495f;
+  --color-text-muted: #55677a;
+  --color-text-light: #55677a;
 
-  --color-border: #eee;
-  --color-border-strong: #ddd;
+  --color-border: #e5e5e5;
+  --color-border-strong: #d1d5db;
 
-  --color-subtle-bg: #f9fafb;
+  --color-subtle-bg: #f7f1de;
   --color-page-bg: #fff;
+
+  --color-gold: #fdc776;
+  --color-sage: #9fa983;
 
   /* Font */
   --font-sans: "DM Sans", system-ui, sans-serif;
-  --font-display: "Instrument Serif", Georgia, serif;
+  --font-display: "Fraunces", Georgia, serif;
   --font-handwriting: "Caveat", cursive;
 
   /* Radius */
   --radius-btn: 1.5rem;
   --radius-btn-rect: 0.5rem;
   --radius-input: 0.75rem;
-  --radius-card: 1rem;
+  --radius-card: 15px;
 
   /* Shadows */
   --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.04);
@@ -33,7 +36,7 @@
 
 :root {
   --background: #fff;
-  --foreground: #222;
+  --foreground: #33495f;
 }
 
 body {
@@ -54,7 +57,7 @@ h1, h2, h3 {
   left: 16px;
   z-index: 100;
   padding: 8px 16px;
-  background: #C2634E;
+  background: #5281a2;
   color: #fff;
   font-size: 14px;
   font-weight: 600;
@@ -79,10 +82,10 @@ h1, h2, h3 {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f9fafb;
+  background: #f7f1de;
 }
 ::-webkit-scrollbar-thumb {
-  background: #bbb;
+  background: #9fa983;
   border-radius: 3px;
 }
 
@@ -94,7 +97,7 @@ a {
 
 /* Polaroid tape — jagged torn edges + noisy texture */
 .polaroid-tape {
-  background: linear-gradient(180deg, rgba(194,99,78,0.24) 0%, rgba(194,99,78,0.13) 100%);
+  background: linear-gradient(180deg, rgba(253,199,118,0.28) 0%, rgba(253,199,118,0.14) 100%);
   box-shadow: 0 0.5px 2px rgba(0,0,0,0.06);
   clip-path: polygon(
     /* left torn edge (going down) */

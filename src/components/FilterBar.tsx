@@ -67,7 +67,7 @@ export default function FilterBar() {
       {(Object.entries(FILTERS) as [FilterKey, (typeof FILTERS)[FilterKey]][]).map(
         ([key, filter]) => (
           <div key={key} className="flex items-center gap-2">
-            <span className="text-xs font-semibold text-[#999] uppercase tracking-wide shrink-0">
+            <span className="text-xs font-semibold text-[#5281a2] uppercase tracking-wide shrink-0">
               {filter.label}
             </span>
             <div className="flex gap-1.5">
@@ -79,8 +79,8 @@ export default function FilterBar() {
                     onClick={() => toggleFilter(key, option.value)}
                     className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                       isActive
-                        ? "bg-[#C2634E] text-white shadow-sm"
-                        : "bg-[#f5f3f0] text-[#666] hover:bg-[#ebe8e4] hover:text-[#444]"
+                        ? "bg-[#5281a2] text-white shadow-sm"
+                        : "bg-[#f7f1de] text-[#55677a] hover:bg-[#ede8d8] hover:text-[#33495f]"
                     }`}
                   >
                     {option.label}
@@ -95,7 +95,7 @@ export default function FilterBar() {
       {hasFilters && (
         <button
           onClick={clearFilters}
-          className="flex items-center gap-1 text-xs text-[#636363] hover:text-[#C2634E] transition-colors cursor-pointer"
+          className="flex items-center gap-1 text-xs text-[#55677a] hover:text-[#5281a2] transition-colors cursor-pointer"
         >
           <X className="h-3 w-3" />
           Clear

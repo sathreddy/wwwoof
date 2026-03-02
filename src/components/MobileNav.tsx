@@ -13,7 +13,7 @@ export default function MobileNav() {
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-label={open ? "Close menu" : "Open menu"}
-        className="flex items-center justify-center h-10 w-10 rounded-lg text-[#444] hover:bg-[#f5f3f0] transition-colors cursor-pointer"
+        className="flex items-center justify-center h-10 w-10 rounded-lg text-[#33495f] hover:bg-[#f7f1de] transition-colors cursor-pointer"
       >
         {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </button>
@@ -24,14 +24,14 @@ export default function MobileNav() {
             <Link
               href="/#success-stories"
               onClick={() => setOpen(false)}
-              className="px-3 py-2.5 rounded-lg text-sm font-semibold text-[#444] hover:bg-[#f5f3f0] transition-colors"
+              className="px-3 py-2.5 rounded-lg text-sm font-semibold text-[#33495f] hover:bg-[#f7f1de] transition-colors"
             >
               Success Stories
             </Link>
             <Link
               href="/dogs"
               onClick={() => setOpen(false)}
-              className="px-3 py-2.5 rounded-lg text-sm font-semibold text-[#444] hover:bg-[#f5f3f0] transition-colors"
+              className="px-3 py-2.5 rounded-lg text-sm font-semibold text-[#33495f] hover:bg-[#f7f1de] transition-colors"
             >
               Browse Dogs
             </Link>
